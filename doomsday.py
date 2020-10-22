@@ -12,10 +12,12 @@ import datetime, calendar, math, random
 # adoption, October 15th, 1582 (until such time as we manage to capture
 # conversion to old/new-style Julian calendars, regional adoption timeframes, etc.)
 OCTOBER_15TH_1582 = datetime.date(1582, 10, 15).toordinal()
+START_DATE = datetime.date(2020, 1, 1).toordinal()
 
 # Additionally, we arbitrarily limit training to dates no later than 
 # the last day of the year 2600.
 DECEMBER_31ST_2600 = datetime.date(2600, 12, 31).toordinal()
+END_DATE = datetime.date(2020, 12, 31).toordinal()
 
 # We store the strings for the names of the days of the week so that we can map
 # the computed day of the week to its name.
@@ -191,7 +193,7 @@ def main():
     errors = 0
     print("Type 'q' to quit, 0 - 6 to enter the day of the week.")
     while True:
-        date = datetime.date.fromordinal(random.randint(OCTOBER_15TH_1582, DECEMBER_31ST_2600))
+        date = datetime.date.fromordinal(random.randint(START_DATE, END_DATE))
         input_dow = input("%s? " % date_str(date))
         if input_dow == 'q':
             break
